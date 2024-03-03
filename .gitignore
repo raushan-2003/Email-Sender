@@ -1,0 +1,9 @@
+# Node.js files
+node_modules/
+
+# Logs
+logs 
+*.log 
+
+# Enivironment Variable filles
+.env 

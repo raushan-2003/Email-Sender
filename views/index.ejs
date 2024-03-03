@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>QR CODE Generator</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+<style>
+    .success-message {
+        color: #28a745;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .failure-message {
+        color: #dc3545;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="m-3">
+<div class="card card-default">
+    <div class="card-header"> QR Generator</div>
+    <div class="card-body">
+        <% if(event && event['statusCode'] == 200){ %>
+            <h3 class="success-message">Email Sent Successfully!</h3>
+        <% } else if(event && event['statusCode'] != 200) { %>
+            <h3 class="failure-message">Failed to Send Email!</h3>
+        <% } else { %>
+            <form action="/sendMail" method="POST">
+                <div class="form-group">
+                    <label for="email">Recipient Email</label>
+                    <input type="email" name="email" id="email" class="form-control" required placeholder="Enter recipient email...">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Email Subject</label>
+                    <input type="text" name="subject" id="subject" class="form-control" required placeholder="Enter email subject...">
+                </div>
+                <div class="form-group">
+                    <label for="text">Email Text</label>
+                    <textarea name="text" id="text" class="form-control" required placeholder="Enter email text..."></textarea>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Send Email</button>
+                </div>
+            </form>
+        <% } %>
+    </div>
+</div>
+</div>
+</body>
+</html>
